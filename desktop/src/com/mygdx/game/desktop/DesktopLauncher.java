@@ -7,6 +7,8 @@ import com.mygdx.game.KirbyGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.width = KirbyGame.WIDTH;
+        config.height = KirbyGame.HEIGHT;
 		new LwjglApplication(new KirbyGame(), config);
 	}
 }
