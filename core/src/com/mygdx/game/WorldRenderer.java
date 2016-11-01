@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class WorldRenderer {
-
-	public static final int BLOCK_SIZE = 40;
+	public static final int BLOCK_SIZE = 13;
+	
 	private KirbyGame kirbyGame;
 	private SpriteBatch batch;
 	private World world;
@@ -26,10 +26,9 @@ public class WorldRenderer {
 		SpriteBatch batch = kirbyGame.batch;
 		batch.begin();
 		Vector2 pos = world.getKirby().getPosition();
-		batch.draw(kirbyImg, pos.x, pos.y);
+		batch.draw(kirbyImg, pos.x-BLOCK_SIZE, pos.y);
 		font.draw(batch, "" + world.getScore(), 700, 60);
 		batch.end();
-		
 	}
 
 }

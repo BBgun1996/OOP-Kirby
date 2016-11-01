@@ -13,6 +13,8 @@ public class Kirby {
 	private int currentDirection;
 	private int nextDirection;
 	private World world;
+	private WorldRenderer worldRenderer;
+	private KirbyGame kirbyGame;
 	 
 	public Kirby(int x, int y, World world) {
 		position = new Vector2(x,y);
@@ -31,15 +33,24 @@ public class Kirby {
 	}
 	
 	public void update() {
-
-		currentDirection = nextDirection;  
+		if(canMoveInDirection(nextDirection)){
+			currentDirection = nextDirection;  
+		} else {
+			currentDirection = DIRECTION_STILL;
+		}
 	        
         position.x += SPEED * DIR_OFFSETS[currentDirection];
     }
 	
-	/*private int getColum() {
-        return ((int)position.x) / WorldRenderer.BLOCK_SIZE; 
-    }*/
+	private boolean canMoveInDirection(int dir) {
+        int newX = (int) (position.x + (SPEED * DIR_OFFSETS[dir]));
+ 
+        if(newX >= WorldRenderer.BLOCK_SIZE && newX <= kirbyGame.WIDTH-WorldRenderer.BLOCK_SIZE){
+        	return true;
+        }
+        
+        return false;
+    }
 
 
 }
