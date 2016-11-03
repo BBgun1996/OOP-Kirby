@@ -1,9 +1,6 @@
 package com.mygdx.game;
 
-import java.util.Random;
-
 public class World {
-
 	private KirbyGame kirbyGame;
 	private Kirby kirby;
 	private Cupcake cupcake;
@@ -11,11 +8,10 @@ public class World {
 	private int score;
 
 	public World(KirbyGame kirbyGame) {
+		cupcake = new Cupcake();
 		kirby = new Kirby(400, 100, this);
 		this.kirbyGame = kirbyGame;
-		
-		genCupcake();
-		
+
 		score = 0;
 	}
 
@@ -24,12 +20,6 @@ public class World {
 		cupcake.update();
 	}
 	
-	private void genCupcake(){
-		Random randomGenerator = new Random();
-		int randomX = randomGenerator.nextInt(kirbyGame.WIDTH);
-		cupcake = new Cupcake(randomX, kirbyGame.HEIGHT, this);
-	}
-
 	public Kirby getKirby() {
 		return kirby;
 	}
@@ -41,5 +31,9 @@ public class World {
 	public int getScore() {
 		return score;
 	}
-	
+
+	public void increaseScore() {
+		score++;
+	}
+
 }
