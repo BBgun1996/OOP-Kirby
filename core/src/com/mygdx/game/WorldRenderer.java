@@ -12,6 +12,7 @@ public class WorldRenderer {
 	private SpriteBatch batch;
 	private World world;
 	private Texture kirbyImg;
+	private Texture cupcakeImg;
 	private BitmapFont font;
 
 	public WorldRenderer(KirbyGame kirbyGame, World world) {
@@ -19,6 +20,7 @@ public class WorldRenderer {
 		batch = kirbyGame.batch;
 		this.world = world;
 		kirbyImg = new Texture("kirby.gif");
+		cupcakeImg = new Texture("cupcake.gif");
 		font = new BitmapFont();
 	}
 
@@ -27,8 +29,16 @@ public class WorldRenderer {
 		batch.begin();
 		Vector2 pos = world.getKirby().getPosition();
 		batch.draw(kirbyImg, pos.x-BLOCK_SIZE, pos.y);
+		
+		rendererCupcake(delta);
+
 		font.draw(batch, "" + world.getScore(), 700, 60);
 		batch.end();
+	}
+	
+	private void rendererCupcake(float delta) {
+		Vector2 pos = world.getCupcake().getPosition();
+		batch.draw(cupcakeImg, 100, pos.y);
 	}
 
 }

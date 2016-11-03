@@ -11,7 +11,7 @@ public class GameScreen extends ScreenAdapter {
 	
 	public GameScreen(KirbyGame kirbyGame){
 		world = new World(kirbyGame);
-		worldRenderer = new WorldRenderer(kirbyGame,world);
+		worldRenderer = new WorldRenderer(kirbyGame, world);
 	}
 	
 	@Override
@@ -23,12 +23,12 @@ public class GameScreen extends ScreenAdapter {
     }
 
 	private void update(float delta) {
-		updatePacmanDirection();
+		updateKirbyDirection();
 		world.update(delta);
 		
 	}
 
-	private void updatePacmanDirection() {
+	private void updateKirbyDirection() {
 		Kirby kirby = world.getKirby();
 		
 		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
