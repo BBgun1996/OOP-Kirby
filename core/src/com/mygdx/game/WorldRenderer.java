@@ -31,8 +31,9 @@ public class WorldRenderer {
 		batch.begin();
 		Vector2 pos = world.getKirby().getPosition();
 		batch.draw(kirbyImg, pos.x-BLOCK_SIZE, pos.y);
-
-		font.draw(batch, "" + world.getScore(), 700, 60);
+		
+		font.draw(batch, "Life : " + world.getScore(), 650, 80);
+		font.draw(batch, "Score : " + world.getScore(), 650, 60);
 		batch.end();
 	}
 	

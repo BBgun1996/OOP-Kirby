@@ -40,15 +40,16 @@ public class Cupcake {
             for(int x = 0; x < kirbyGame.WIDTH; x++) {
                 if(hasCupcakeAt(x, y) && y > SPEED) {
                     hasCupcakes[x][y-SPEED] = true;
+                    //System.out.println(x);//
                 }
-            	hasCupcakes[x][y] = false;
+                removeCupcakeAt(x, y);
             }
         }
 	}
     
     private void genCupcake() {
-		int x = randomInt(kirbyGame.WIDTH * 200);
-		if(x < kirbyGame.WIDTH){
+		int x = randomInt(kirbyGame.WIDTH * 2);//200
+		if(x < kirbyGame.WIDTH) {
 			x = randomInt(kirbyGame.WIDTH-1);
 			hasCupcakes[x][kirbyGame.HEIGHT-1] = true;
 		}
