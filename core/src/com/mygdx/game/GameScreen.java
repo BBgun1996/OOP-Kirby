@@ -9,7 +9,7 @@ public class GameScreen extends ScreenAdapter {
 	private World world;
 	private WorldRenderer worldRenderer;
 	
-	public GameScreen(KirbyGame kirbyGame){
+	public GameScreen(KirbyGame kirbyGame) {
 		world = new World(kirbyGame);
 		worldRenderer = new WorldRenderer(kirbyGame, world);
 	}

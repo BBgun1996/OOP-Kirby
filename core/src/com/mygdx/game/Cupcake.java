@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Cupcake {
 	private static final int SPEED = 1;
+	private static final int CUPCAKE_SIZE = 40;
 	
 	private Vector2 position;
 	private World world;
@@ -34,23 +35,26 @@ public class Cupcake {
         hasCupcakes[c][r] = false;
     }
     
-    public void update() {
-    	genCupcake();
+    public void update(int lv) {
+    	genCupcake(lv);
     	for(int y = 0; y < kirbyGame.HEIGHT; y++) {
-            for(int x = 0; x < kirbyGame.WIDTH; x++) {
-                if(hasCupcakeAt(x, y) && y > SPEED) {
-                    hasCupcakes[x][y-SPEED] = true;
-                    //System.out.println(x);//
-                }
-                removeCupcakeAt(x, y);
-            }
+    		for(int x = 0; x < kirbyGame.WIDTH; x++) {
+    			if(y > kirbyGame.HEIGHT/6) {
+    				if(hasCupcakeAt(x, y) && y > SPEED) {
+    					hasCupcakes[x][y-SPEED] = true;
+    				}
+    				removeCupcakeAt(x, y);
+    			} else {
+    				removeCupcakeAt(x, y);
+    			}
+    		}
         }
 	}
     
-    private void genCupcake() {
-		int x = randomInt(kirbyGame.WIDTH * 2);//200
-		if(x < kirbyGame.WIDTH) {
-			x = randomInt(kirbyGame.WIDTH-1);
+    private void genCupcake(int lv) {
+		int x = randomInt(300/lv);
+		if(x < 1) {
+			x = randomInt(kirbyGame.WIDTH-CUPCAKE_SIZE);
 			hasCupcakes[x][kirbyGame.HEIGHT-1] = true;
 		}
 	}

@@ -4,8 +4,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class KirbyGame extends Game {
-	public static final int WIDTH = 800;
-	public static final int HEIGHT = 600;
+	public static final int WIDTH = 1200;
+	public static final int HEIGHT = 900;
 	
 	public SpriteBatch batch;
 	 

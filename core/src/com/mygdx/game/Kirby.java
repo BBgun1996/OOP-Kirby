@@ -3,10 +3,11 @@ package com.mygdx.game;
 import com.badlogic.gdx.math.Vector2;
 
 public class Kirby {
+	public static final int KIRBY_SIZE = 13;
 	public static final int DIRECTION_RIGHT = 1;
 	public static final int DIRECTION_LEFT = 2;
 	public static final int DIRECTION_STILL = 0;
-	private static final int SPEED = 5;
+	private static final int SPEED = 8;
 	private static final int[] DIR_OFFSETS = {0, 1, -1};
 	
 	private Vector2 position;
@@ -41,12 +42,11 @@ public class Kirby {
 		}
 		position.x += SPEED * DIR_OFFSETS[currentDirection];
 		
-		System.out.println(position.x);
-		for(int r = (int)position.y-26; r < (int)position.y+26; r++) {
-            for(int c = (int)position.x-26-26; c < (int)position.x+13; c++) {
+		//System.out.println(position.x);
+		for(int r = (int)position.y-KIRBY_SIZE*2; r < (int)position.y+KIRBY_SIZE*2; r++) {
+            for(int c = (int)position.x-KIRBY_SIZE*4; c < (int)position.x+KIRBY_SIZE; c++) {
             	if(c < kirbyGame.WIDTH && c >= 0) {
             		if(world.getCupcake().hasCupcakeAt(c, r)) {
-            			System.out.println("++++++");
             			world.getCupcake().removeCupcakeAt(c, r);
             			world.increaseScore();
             		}
@@ -58,7 +58,7 @@ public class Kirby {
 	private boolean canMoveInDirection(int dir) {
         int newX = (int) (position.x + (SPEED * DIR_OFFSETS[dir]));
  
-        if(newX >= WorldRenderer.BLOCK_SIZE && newX <= kirbyGame.WIDTH-WorldRenderer.BLOCK_SIZE) {
+        if(newX >= KIRBY_SIZE && newX <= kirbyGame.WIDTH-KIRBY_SIZE) {
         	return true;
         }
         
