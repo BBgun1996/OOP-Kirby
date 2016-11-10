@@ -4,6 +4,7 @@ public class World {
 	private KirbyGame kirbyGame;
 	private Kirby kirby;
 	private Cupcake cupcake;
+	private Heart heart;
 	
 	private int level;
 	private int score;
@@ -11,6 +12,7 @@ public class World {
 
 	public World(KirbyGame kirbyGame) {
 		cupcake = new Cupcake();
+		heart = new Heart();
 		kirby = new Kirby(KirbyGame.WIDTH/2, KirbyGame.HEIGHT/6, this);
 		
 		level = 1;
@@ -21,6 +23,8 @@ public class World {
 	public void update(float delta) {
 		kirby.update();
 		cupcake.update(level);
+		heart.update(level);//
+		updateHeart();
 		increaseLevel();
 	}
 	
@@ -30,6 +34,10 @@ public class World {
 	
 	public Cupcake getCupcake() {
 		return cupcake;
+	}
+	
+	public Heart getHeart() {
+		return heart;
 	}
 
 	public int getLevel() {
@@ -60,6 +68,15 @@ public class World {
 	
 	public void decreaseLife() {
 		life--;
+	}
+
+	private void updateHeart() {
+		for(int x = 0; x < kirbyGame.WIDTH; x++) {
+    		if(getHeart().hasHeartAt(x,(kirbyGame.HEIGHT/6)+1)) {
+    			getHeart().removeHeartAt(x,(kirbyGame.HEIGHT/6)+1);
+    			decreaseLife();
+    		}
+    	}
 	}
 
 }
