@@ -23,31 +23,31 @@ public class ObjectsGame {
     	}
     }
 	 
-	public boolean hasObjectAt(int c, int r) {
+	private boolean hasObjectAt(int c, int r) {
         return hasObjects[c][r];
     }
     
-    public void removeObjectAt(int c, int r) {
+    private void removeObjectAt(int c, int r) {
         hasObjects[c][r] = false;
     }
     
-    protected void genObject(int lv, int OBJECT_SIZE, int range) {
-		int x = randomInt(range/lv);
+    protected void genObject(int level, int OBJECT_SIZE, int range) {
+		int x = randomInt(range / level);
 		if(x < 1) {
-			x = randomInt(kirbyGame.WIDTH-OBJECT_SIZE);
-			hasObjects[x][kirbyGame.HEIGHT-1] = true;
+			x = randomInt(kirbyGame.WIDTH - OBJECT_SIZE);
+			hasObjects[x][kirbyGame.HEIGHT - 1] = true;
 		}
 	}
     
-    protected void updateObject(int SPEED, boolean check) {
+    protected void updateObject(int SPEED, boolean deleteWhenObjDropAtFloor) {
     	for(int y = 0; y < kirbyGame.HEIGHT; y++) {
     		for(int x = 0; x < kirbyGame.WIDTH; x++) {
     			if(y > kirbyGame.HEIGHT/6) {
     				if(hasObjectAt(x, y) && y > SPEED) {
-    					hasObjects[x][y-SPEED] = true;
+    					hasObjects[x][y - SPEED] = true;
     				}
     				removeObjectAt(x, y);
-    			} else if (check) {
+    			} else if (deleteWhenObjDropAtFloor) {
     				removeObjectAt(x, y);
     			}
     		}

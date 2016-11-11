@@ -35,8 +35,9 @@ public class WorldRenderer {
 
 	public void render(float delta) {
 		SpriteBatch batch = kirbyGame.batch;		
-		batch.begin();
 		Vector2 pos = world.getKirby().getPosition();
+		
+		batch.begin();
 		batch.draw(bgImg, 0, 0);
 		batch.draw(kirbyImg, pos.x-world.getKirby().KIRBY_SIZE, pos.y);
 		

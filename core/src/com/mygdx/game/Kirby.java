@@ -42,14 +42,14 @@ public class Kirby {
 		}
 		position.x += SPEED * DIR_OFFSETS[currentDirection];
 		
-		for(int r = (int)position.y; r < (int)position.y+KIRBY_SIZE*2; r++) {
+		for(int r = (int)position.y; r < (int)position.y+(KIRBY_SIZE*2); r++) {
 			updateCupcake(r);
 			updateHeart(r);
 		}
     }
 	
 	private boolean canMoveInDirection(int dir) {
-        int newX = (int) (position.x + (SPEED * DIR_OFFSETS[dir]));
+        int newX = (int)position.x + (SPEED * DIR_OFFSETS[dir]);
  
         if(newX >= KIRBY_SIZE && newX <= kirbyGame.WIDTH-KIRBY_SIZE) {
         	return true;
@@ -59,7 +59,7 @@ public class Kirby {
     }
 	
 	private void updateCupcake(int r) {
-		for(int c = (int)position.x-world.getCupcake().getSize(); c < (int)position.x+KIRBY_SIZE; c++) {
+		for(int c = (int)position.x - world.getCupcake().getSize(); c < (int)position.x + KIRBY_SIZE; c++) {
         	if(c < kirbyGame.WIDTH && c >= 0) {
         		if(world.getCupcake().hasCupcakeAt(c, r)) {
         			world.getCupcake().removeCupcakeAt(c, r);
@@ -70,7 +70,7 @@ public class Kirby {
 	}
 	
 	private void updateHeart(int r) {
-		for(int c = (int)position.x-world.getHeart().getSize(); c < (int)position.x+KIRBY_SIZE; c++) {
+		for(int c = (int)position.x - world.getHeart().getSize(); c < (int)position.x + KIRBY_SIZE; c++) {
         	if(c < kirbyGame.WIDTH && c >= 0) {
         		if(world.getHeart().hasHeartAt(c, r)) {
         			world.getHeart().removeHeartAt(c, r);

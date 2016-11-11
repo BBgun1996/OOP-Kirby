@@ -13,8 +13,8 @@ public class Heart extends ObjectsGame {
 		super();
 	}
 	
-	public void update(int lv) {
-    	genObject(lv, HEART_SIZE, 1000);
+	public void update(int level) {
+    	genObject(level, HEART_SIZE, 1000);
     	updateObject(SPEED, false);
 	}
 	

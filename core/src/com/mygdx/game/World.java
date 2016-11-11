@@ -13,7 +13,7 @@ public class World {
 	public World(KirbyGame kirbyGame) {
 		cupcake = new Cupcake();
 		heart = new Heart();
-		kirby = new Kirby(KirbyGame.WIDTH/2, KirbyGame.HEIGHT/6, this);
+		kirby = new Kirby((KirbyGame.WIDTH / 2), (KirbyGame.HEIGHT / 6), this);
 		
 		level = 1;
 		score = 0;
@@ -53,7 +53,7 @@ public class World {
 	}
 	
 	public void increaseLevel() {
-		if(score >= Math.pow(level*5, 2)) {
+		if(score >= Math.pow(level * 5, 2)) {
 			level++;
 		}
 	}
@@ -72,8 +72,8 @@ public class World {
 
 	private void updateHeart() {
 		for(int x = 0; x < kirbyGame.WIDTH; x++) {
-    		if(getHeart().hasHeartAt(x,(kirbyGame.HEIGHT/6)+2)) {
-    			getHeart().removeHeartAt(x,(kirbyGame.HEIGHT/6)+2);
+    		if(getHeart().hasHeartAt(x, (kirbyGame.HEIGHT / 6) + 2)) {
+    			getHeart().removeHeartAt(x, (kirbyGame.HEIGHT / 6) + 2);
     			decreaseLife();
     		}
     	}

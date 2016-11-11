@@ -21,8 +21,8 @@ public class Cupcake extends ObjectsGame {
         hasCupcakes[c][r] = false;
     }
     
-    public void update(int lv) {
-    	genObject(lv, CUPCAKE_SIZE, 200);
+    public void update(int level) {
+    	genObject(level, CUPCAKE_SIZE, 200);
     	updateObject(SPEED, true);
 	}
     
