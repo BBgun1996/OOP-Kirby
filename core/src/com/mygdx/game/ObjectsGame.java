@@ -39,7 +39,7 @@ public class ObjectsGame {
 		}
 	}
     
-    protected void updateObject(int SPEED, int check) {
+    protected void updateObject(int SPEED, boolean check) {
     	for(int y = 0; y < kirbyGame.HEIGHT; y++) {
     		for(int x = 0; x < kirbyGame.WIDTH; x++) {
     			if(y > kirbyGame.HEIGHT/6) {
@@ -47,7 +47,7 @@ public class ObjectsGame {
     					hasObjects[x][y-SPEED] = true;
     				}
     				removeObjectAt(x, y);
-    			} else if (check == 1) {
+    			} else if (check) {
     				removeObjectAt(x, y);
     			}
     		}

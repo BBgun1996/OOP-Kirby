@@ -1,32 +1,18 @@
 package com.mygdx.game;
 
-import java.util.Random;
-
-import com.badlogic.gdx.math.Vector2;
-
-public class Cupcake {
-	private static final int SPEED = 1;
+public class Cupcake extends ObjectsGame {
+	private static final int SPEED = 2;
 	private static final int CUPCAKE_SIZE = 40;
 	
-	private Vector2 position;
 	private World world;
 	private KirbyGame kirbyGame;
 	
-	public boolean [][] hasCupcakes;
+	public boolean [][] hasCupcakes = hasObjects;
 	
 	public Cupcake() {
-        initData();
+        super();
     }
     
-    private void initData() {
-    	hasCupcakes = new boolean[kirbyGame.WIDTH][kirbyGame.HEIGHT];
-        for(int y = 0; y < kirbyGame.HEIGHT; y++) {
-            for(int x = 0; x < kirbyGame.WIDTH; x++) {
-                    hasCupcakes[x][y] = false;
-            }
-    	}
-    }
-	 
 	public boolean hasCupcakeAt(int c, int r) {
         return hasCupcakes[c][r];
     }
@@ -36,32 +22,11 @@ public class Cupcake {
     }
     
     public void update(int lv) {
-    	genCupcake(lv);
-    	for(int y = 0; y < kirbyGame.HEIGHT; y++) {
-    		for(int x = 0; x < kirbyGame.WIDTH; x++) {
-    			if(y > kirbyGame.HEIGHT/6) {
-    				if(hasCupcakeAt(x, y) && y > SPEED) {
-    					hasCupcakes[x][y-SPEED] = true;
-    				}
-    				removeCupcakeAt(x, y);
-    			} else {
-    				removeCupcakeAt(x, y);
-    			}
-    		}
-        }
+    	genObject(lv, CUPCAKE_SIZE, 200);
+    	updateObject(SPEED, true);
 	}
     
-    private void genCupcake(int lv) {
-		int x = randomInt(300/lv);
-		if(x < 1) {
-			x = randomInt(kirbyGame.WIDTH-CUPCAKE_SIZE);
-			hasCupcakes[x][kirbyGame.HEIGHT-1] = true;
-		}
-	}
-    
-    private int randomInt(int range) {
-		Random randomGenerator = new Random();
-		return randomGenerator.nextInt(range);
-	}
-    
+    public int getSize() {
+    	return CUPCAKE_SIZE;
+    }
 }

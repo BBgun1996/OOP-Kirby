@@ -7,7 +7,7 @@ public class Kirby {
 	public static final int DIRECTION_RIGHT = 1;
 	public static final int DIRECTION_LEFT = 2;
 	public static final int DIRECTION_STILL = 0;
-	private static final int SPEED = 8;
+	private static final int SPEED = 5;
 	private static final int[] DIR_OFFSETS = {0, 1, -1};
 	
 	private Vector2 position;
@@ -42,24 +42,9 @@ public class Kirby {
 		}
 		position.x += SPEED * DIR_OFFSETS[currentDirection];
 		
-		//System.out.println(position.x);
-		for(int r = (int)position.y-KIRBY_SIZE*2; r < (int)position.y+KIRBY_SIZE*2; r++) {
-            for(int c = (int)position.x-KIRBY_SIZE*4; c < (int)position.x+KIRBY_SIZE; c++) {
-            	if(c < kirbyGame.WIDTH && c >= 0) {
-            		if(world.getCupcake().hasCupcakeAt(c, r)) {
-            			world.getCupcake().removeCupcakeAt(c, r);
-            			world.increaseScore();
-            		}
-            	}
-            }
-            
-            for(int c = (int)position.x-KIRBY_SIZE*9; c < (int)position.x+KIRBY_SIZE; c++) {
-            	if(c < kirbyGame.WIDTH && c >= 0) {
-            		if(world.getHeart().hasHeartAt(c, r)) {
-            			world.getHeart().removeHeartAt(c, r);
-            		}
-            	}
-            }  
+		for(int r = (int)position.y; r < (int)position.y+KIRBY_SIZE*2; r++) {
+			updateCupcake(r);
+			updateHeart(r);
 		}
     }
 	
@@ -72,6 +57,26 @@ public class Kirby {
         
         return false;
     }
-
+	
+	private void updateCupcake(int r) {
+		for(int c = (int)position.x-world.getCupcake().getSize(); c < (int)position.x+KIRBY_SIZE; c++) {
+        	if(c < kirbyGame.WIDTH && c >= 0) {
+        		if(world.getCupcake().hasCupcakeAt(c, r)) {
+        			world.getCupcake().removeCupcakeAt(c, r);
+        			world.increaseScore();
+        		}
+        	}
+        }
+	}
+	
+	private void updateHeart(int r) {
+		for(int c = (int)position.x-world.getHeart().getSize(); c < (int)position.x+KIRBY_SIZE; c++) {
+        	if(c < kirbyGame.WIDTH && c >= 0) {
+        		if(world.getHeart().hasHeartAt(c, r)) {
+        			world.getHeart().removeHeartAt(c, r);
+        		}
+        	}
+        }
+	}
 
 }
