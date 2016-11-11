@@ -52,6 +52,14 @@ public class Kirby {
             		}
             	}
             }
+            
+            for(int c = (int)position.x-KIRBY_SIZE*9; c < (int)position.x+KIRBY_SIZE; c++) {
+            	if(c < kirbyGame.WIDTH && c >= 0) {
+            		if(world.getHeart().hasHeartAt(c, r)) {
+            			world.getHeart().removeHeartAt(c, r);
+            		}
+            	}
+            }  
 		}
     }
 	

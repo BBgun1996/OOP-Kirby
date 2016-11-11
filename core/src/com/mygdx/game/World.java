@@ -17,7 +17,7 @@ public class World {
 		
 		level = 1;
 		score = 0;
-		life = 5;
+		life = 3;
 	}
 
 	public void update(float delta) {
