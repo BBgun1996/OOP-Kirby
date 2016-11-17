@@ -42,7 +42,7 @@ public class ObjectsGame {
     protected void updateObject(int SPEED, boolean deleteWhenObjDropAtFloor) {
     	for(int y = 0; y < kirbyGame.HEIGHT; y++) {
     		for(int x = 0; x < kirbyGame.WIDTH; x++) {
-    			if(y > kirbyGame.HEIGHT/6) {
+    			if(y > kirbyGame.HEIGHT / 6) {
     				if(hasObjectAt(x, y) && y > SPEED) {
     					hasObjects[x][y - SPEED] = true;
     				}
