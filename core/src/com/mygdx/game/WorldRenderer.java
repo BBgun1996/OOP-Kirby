@@ -39,14 +39,14 @@ public class WorldRenderer {
 		
 		batch.begin();
 		batch.draw(bgImg, 0, 0);
-		batch.draw(kirbyImg, pos.x-world.getKirby().KIRBY_SIZE, pos.y);
+		batch.draw(kirbyImg, pos.x - world.getKirby().KIRBY_SIZE, pos.y);
 		
 		renderCupcake(delta);
 		renderHeart(delta);
 		
-		font.draw(batch, "Level : " + world.getLevel(), (float) (KirbyGame.WIDTH*0.05), KirbyGame.HEIGHT/10);
-		font.draw(batch, "Life : " + world.getLife(), (float) (KirbyGame.WIDTH*0.85), KirbyGame.HEIGHT/10);
-		font.draw(batch, "Score : " + world.getScore(), (float) (KirbyGame.WIDTH*0.85), KirbyGame.HEIGHT/10-20);
+		font.draw(batch, "Level : " + world.getLevel(), (float) (KirbyGame.WIDTH * 0.05), KirbyGame.HEIGHT / 10);
+		font.draw(batch, "Life : " + world.getLife(), (float) (KirbyGame.WIDTH * 0.85), KirbyGame.HEIGHT / 10);
+		font.draw(batch, "Score : " + world.getScore(), (float) (KirbyGame.WIDTH * 0.85), (KirbyGame.HEIGHT / 10) - 20);
 		batch.end();
 	}
 	

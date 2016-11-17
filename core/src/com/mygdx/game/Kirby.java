@@ -42,7 +42,7 @@ public class Kirby {
 		}
 		position.x += SPEED * DIR_OFFSETS[currentDirection];
 		
-		for(int r = (int)position.y; r < (int)position.y+(KIRBY_SIZE*2); r++) {
+		for(int r = (int)position.y; r < (int)position.y + (KIRBY_SIZE * 2); r++) {
 			updateCupcake(r);
 			updateHeart(r);
 		}
