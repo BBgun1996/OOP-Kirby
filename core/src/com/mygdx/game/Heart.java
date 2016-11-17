@@ -2,7 +2,7 @@ package com.mygdx.game;
 
 public class Heart extends ObjectsGame {
 	private static final int SPEED = 3;
-	private static final int HEART_SIZE = 90;
+	private static final int HEART_SIZE = 40;
 	
 	private KirbyGame kirbyGame;
 	private World world;
