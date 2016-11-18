@@ -2,7 +2,7 @@ package com.mygdx.game;
 
 public class Cupcake extends ObjectsGame {
 	private static final int SPEED = 2;
-	private static final int CUPCAKE_SIZE = 40;
+	private static final int CUPCAKE_SIZE = 50;
 	
 	private World world;
 	private KirbyGame kirbyGame;

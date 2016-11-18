@@ -92,9 +92,15 @@ public class GameScreen extends ScreenAdapter {
 				screen = SCREEN_GAME;
 			}
 		} else if(screen == SCREEN_GAMEOVER) {
-			if(Gdx.input.isKeyPressed(Keys.SPACE)) {
+			if(Gdx.input.isKeyPressed(Keys.ENTER)) {
+				this.world = new World(kirbyGame);
+				this.worldRenderer = new WorldRenderer(kirbyGame, world);
 				screen = SCREEN_MENU;
 			}
+		}
+		
+		if(world.getLife() < 1) {
+			screen = SCREEN_GAMEOVER;
 		}
 	}
 

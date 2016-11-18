@@ -17,7 +17,7 @@ public class World {
 		
 		level = 1;
 		score = 0;
-		life = 3;
+		life = 2;
 	}
 
 	public void update(float delta) {
@@ -53,7 +53,7 @@ public class World {
 	}
 	
 	public void increaseLevel() {
-		if(score >= Math.pow(level * 5, 2)) {
+		if(score >= Math.pow((level + 1), 2)) {
 			level++;
 		}
 	}
